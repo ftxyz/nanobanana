@@ -21,7 +21,7 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/你的用户名/nanobanana.git
+   git clone https://github.com/ftxyz/nanobanana.git
    cd nanobanana
    ```
 
