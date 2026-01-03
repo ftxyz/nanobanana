@@ -90,10 +90,9 @@ export function Editor() {
     <section id="editor" className="py-20">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Try The AI Editor</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">体验 AI 包装盒生成器</h2>
           <p className="text-muted-foreground text-lg text-balance leading-relaxed">
-            Experience the power of nano-banana's natural language image editing. Transform any photo with simple text
-            commands
+            上传角色图片，一键生成专业的 BANDAI 风格 3D 包装盒。无需输入提示词，AI 自动为您创建精美的收藏级包装盒设计
           </p>
         </div>
 
@@ -102,14 +101,14 @@ export function Editor() {
           <Card className="p-6 border-2 border-primary/20">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">AI Image Generator</h3>
+              <h3 className="text-lg font-semibold">AI 包装盒生成器</h3>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">使用AI根据你的图片生成BANDAI风格包装盒</p>
+            <p className="text-sm text-muted-foreground mb-6">上传角色图片，一键生成专业的 BANDAI 风格 3D 包装盒</p>
 
             <div className="space-y-6">
               <div>
                 <Label htmlFor="image-upload" className="text-sm font-medium mb-2 block">
-                  Reference Image
+                  参考图片
                 </Label>
                 <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors cursor-pointer">
                   <input
@@ -123,14 +122,14 @@ export function Editor() {
                     {selectedImage ? (
                       <img
                         src={selectedImage || "/placeholder.svg"}
-                        alt="Uploaded"
+                        alt="已上传"
                         className="max-h-40 mx-auto rounded-lg"
                       />
                     ) : (
                       <>
                         <Upload className="h-10 w-10 mx-auto mb-3 text-muted-foreground" />
-                        <p className="text-sm text-muted-foreground mb-1">Add Image</p>
-                        <p className="text-xs text-muted-foreground">Max 50MB</p>
+                        <p className="text-sm text-muted-foreground mb-1">添加图片</p>
+                        <p className="text-xs text-muted-foreground">最大 50MB</p>
                       </>
                     )}
                   </label>
@@ -151,7 +150,7 @@ export function Editor() {
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-4 w-4" />
-                    Generate Now
+                    立即生成
                   </>
                 )}
               </Button>
@@ -170,9 +169,9 @@ export function Editor() {
               <div className="h-5 w-5 rounded bg-primary/10 flex items-center justify-center">
                 <span className="text-xs text-primary">✨</span>
               </div>
-              <h3 className="text-lg font-semibold">Generated Images</h3>
+              <h3 className="text-lg font-semibold">生成的包装盒</h3>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">AI生成的图像将显示在这里</p>
+            <p className="text-sm text-muted-foreground mb-6">AI 生成的 BANDAI 风格包装盒将显示在这里</p>
 
             <div className="min-h-96">
               {generatedImages.length > 0 ? (
@@ -217,8 +216,8 @@ export function Editor() {
                     <div className="h-16 w-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
                       <Upload className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-sm font-medium mb-1">Ready for Image Generation</p>
-                    <p className="text-xs text-muted-foreground">Upload an image to generate a BANDAI-style packaging box</p>
+                    <p className="text-sm font-medium mb-1">准备生成包装盒</p>
+                    <p className="text-xs text-muted-foreground">上传图片以生成 BANDAI 风格包装盒</p>
                   </div>
                 </div>
               )}

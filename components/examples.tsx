@@ -3,40 +3,40 @@ import { Badge } from "@/components/ui/badge"
 
 const examples = [
   {
-    title: "Portrait Enhancement",
-    description: "Transform portraits with natural lighting and professional quality",
+    title: "动漫角色包装盒",
+    description: "将动漫角色转换为专业的 BANDAI 风格收藏级包装盒",
     image: "/professional-portrait-with-natural-lighting.jpg",
-    category: "Portrait",
+    category: "动漫",
   },
   {
-    title: "Scene Transformation",
-    description: "Change environments while maintaining subject consistency",
+    title: "游戏角色包装盒",
+    description: "为游戏角色创建精美的 3D 包装盒设计",
     image: "/person-in-futuristic-city-scene.jpg",
-    category: "Scene",
+    category: "游戏",
   },
   {
-    title: "Style Transfer",
-    description: "Apply artistic styles while preserving character identity",
+    title: "原创角色包装盒",
+    description: "为原创角色设计专业的收藏级包装盒",
     image: "/artistic-style-transfer-portrait.jpg",
-    category: "Style",
+    category: "原创",
   },
   {
-    title: "Object Editing",
-    description: "Add or remove objects with seamless integration",
+    title: "手办包装盒",
+    description: "生成真实的手办产品包装盒效果图",
     image: "/product-photography-clean.png",
-    category: "Object",
+    category: "手办",
   },
   {
-    title: "Color Grading",
-    description: "Professional color correction and mood enhancement",
+    title: "限定版包装盒",
+    description: "创建具有品牌标识的限定版包装盒设计",
     image: "/cinematic-color-grading-landscape.jpg",
-    category: "Color",
+    category: "限定",
   },
   {
-    title: "Background Replacement",
-    description: "Replace backgrounds while maintaining natural lighting",
+    title: "收藏级包装盒",
+    description: "专业级收藏品包装盒，包含完整品牌元素",
     image: "/portrait-with-tropical-beach-background.jpg",
-    category: "Background",
+    category: "收藏",
   },
 ]
 
@@ -45,9 +45,9 @@ export function Examples() {
     <section id="examples" className="py-20 bg-muted/30">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Showcase Gallery</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">作品展示</h2>
           <p className="text-muted-foreground text-lg text-balance leading-relaxed">
-            Explore the possibilities with our AI-powered image editing. Real examples from our community
+            探索 AI 生成的 BANDAI 风格包装盒设计，查看来自社区的精彩作品
           </p>
         </div>
 

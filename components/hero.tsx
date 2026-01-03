@@ -13,7 +13,7 @@ export function Hero() {
         <div className="mx-auto max-w-4xl text-center">
           <Badge variant="secondary" className="mb-6 px-4 py-1.5">
             <Sparkles className="mr-2 h-3.5 w-3.5" />
-            The AI model that outperforms competitors
+            AI 驱动的包装盒设计工具
           </Badge>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-balance">
@@ -21,32 +21,31 @@ export function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance leading-relaxed">
-            Transform any image with simple text prompts. Nano-banana's advanced model delivers consistent character
-            editing and scene preservation that surpasses competitors. Experience the future of AI image editing.
+            一键生成专业级 BANDAI 风格 3D 包装盒。上传角色图片，AI 自动为您创建精美的收藏级手办包装盒设计，包含品牌标识和高质量艺术设计。
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-8">
-              Start Editing
+              开始生成
               <Sparkles className="ml-2 h-4 w-4" />
             </Button>
             <Button size="lg" variant="outline" className="text-base px-8 bg-transparent">
-              View Examples
+              查看示例
             </Button>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <Zap className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">One-shot editing</span>
+              <span className="text-muted-foreground">一键生成</span>
             </div>
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Multi-image support</span>
+              <span className="text-muted-foreground">专业设计</span>
             </div>
             <div className="flex items-center gap-2">
               <MessageSquare className="h-4 w-4 text-primary" />
-              <span className="text-muted-foreground">Natural language</span>
+              <span className="text-muted-foreground">3D 包装盒</span>
             </div>
           </div>
         </div>

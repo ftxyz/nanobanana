@@ -17,31 +17,31 @@ export function Header() {
             href="#editor"
             className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
           >
-            Image Editor
+            包装盒生成
           </Link>
           <Link
             href="#examples"
             className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
           >
-            Showcase
+            作品展示
           </Link>
           <Link
             href="#testimonials"
             className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
           >
-            Reviews
+            用户评价
           </Link>
           <Link href="#faq" className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-            FAQ
+            常见问题
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
           <Button variant="outline" size="sm">
-            Sign In
+            登录
           </Button>
           <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-            Get Started
+            开始使用
           </Button>
         </div>
       </div>

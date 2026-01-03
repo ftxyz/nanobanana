@@ -4,27 +4,27 @@ import { Wand2, ImageIcon, Sparkles, Zap } from "lucide-react"
 const features = [
   {
     icon: Wand2,
-    title: "AI-Powered Editing",
+    title: "AI 智能生成",
     description:
-      "Transform your images with natural language commands. Our advanced AI understands context and delivers precise results.",
+      "基于先进的 AI 模型，自动识别角色特征并生成专业的 BANDAI 风格包装盒设计，无需复杂操作。",
   },
   {
     icon: ImageIcon,
-    title: "Character Consistency",
+    title: "专业级设计",
     description:
-      "Maintain character identity across edits. Perfect for creating consistent visual narratives and storytelling.",
+      "生成高质量 3D 包装盒效果图，包含品牌标识、角色艺术设计和专业排版，媲美真实产品包装。",
   },
   {
     icon: Sparkles,
-    title: "Scene Preservation",
+    title: "一键生成",
     description:
-      "Edit specific elements while keeping the background and atmosphere intact. Surgical precision meets creative freedom.",
+      "上传图片即可自动生成，无需输入提示词。AI 自动理解角色特征，创建完美的包装盒设计方案。",
   },
   {
     icon: Zap,
-    title: "Lightning Fast",
+    title: "快速高效",
     description:
-      "Get results in seconds, not minutes. Our optimized pipeline ensures rapid generation without compromising quality.",
+      "几秒钟内完成生成，快速预览效果。优化的生成流程确保高质量输出，无需等待。",
   },
 ]
 
@@ -33,9 +33,9 @@ export function Features() {
     <section className="py-20 bg-muted/30">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Powerful Features for Creative Control</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">强大的功能特性</h2>
           <p className="text-muted-foreground text-lg text-balance leading-relaxed">
-            Everything you need to bring your creative vision to life with AI-powered precision
+            专为包装盒设计打造，让您的创意想法快速变为现实
           </p>
         </div>
 

@@ -4,51 +4,51 @@ import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Sarah Chen",
-    role: "Digital Artist",
+    name: "陈小美",
+    role: "手办设计师",
     avatar: "/professional-woman-portrait.png",
     content:
-      "Nano Banana has completely transformed my workflow. The character consistency is unmatched, and the speed is incredible. I can iterate on ideas faster than ever before.",
+      "Nano Banana 完全改变了我的工作流程。生成的包装盒设计质量非常高，速度也很快。我可以快速为不同的角色创建专业的包装盒设计。",
     rating: 5,
   },
   {
-    name: "Marcus Rodriguez",
-    role: "Content Creator",
+    name: "张明",
+    role: "内容创作者",
     avatar: "/professional-man-portrait.png",
     content:
-      "The natural language interface makes it so easy to get exactly what I want. No more fighting with complex tools - just describe it and watch the magic happen.",
+      "一键生成功能太方便了！不需要输入复杂的提示词，上传图片就能得到专业的包装盒设计。这让我可以专注于创作本身。",
     rating: 5,
   },
   {
-    name: "Emily Watson",
-    role: "Marketing Director",
+    name: "王丽",
+    role: "产品经理",
     avatar: "/confident-businesswoman.png",
     content:
-      "We use Nano Banana for all our campaign visuals. The quality is consistently high, and the turnaround time has cut our production costs by 60%.",
+      "我们使用 Nano Banana 为所有产品创建包装盒设计。质量始终如一，生成速度也很快，大大降低了我们的设计成本。",
     rating: 5,
   },
   {
-    name: "David Kim",
-    role: "Photographer",
+    name: "李强",
+    role: "动漫爱好者",
     avatar: "/photographer-portrait.png",
     content:
-      "As a professional photographer, I was skeptical at first. But the scene preservation and lighting control are genuinely impressive. It's become an essential part of my toolkit.",
+      "作为一个动漫爱好者，我经常需要为收藏的角色创建包装盒。Nano Banana 生成的 BANDAI 风格包装盒非常专业，完全满足我的需求。",
     rating: 5,
   },
   {
-    name: "Lisa Anderson",
-    role: "Social Media Manager",
+    name: "刘芳",
+    role: "社交媒体运营",
     avatar: "/creative-professional-portrait.png",
     content:
-      "Creating engaging content has never been easier. The multi-image support means I can maintain brand consistency across all our social channels effortlessly.",
+      "创建吸引人的内容从未如此简单。生成的包装盒设计质量很高，让我可以快速为不同的角色创建专业的视觉效果。",
     rating: 5,
   },
   {
-    name: "James Taylor",
-    role: "Game Developer",
+    name: "赵伟",
+    role: "游戏开发者",
     avatar: "/tech-professional-portrait.jpg",
     content:
-      "Perfect for rapid prototyping game assets. The one-shot editing feature saves us countless hours in the concept phase. Highly recommend for any creative team.",
+      "非常适合快速原型设计。一键生成功能为我们节省了大量时间。强烈推荐给任何需要包装盒设计的创意团队。",
     rating: 5,
   },
 ]
@@ -58,9 +58,9 @@ export function Testimonials() {
     <section id="testimonials" className="py-20">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Loved by Creators Worldwide</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">深受创作者喜爱</h2>
           <p className="text-muted-foreground text-lg text-balance leading-relaxed">
-            Join thousands of professionals who trust Nano Banana for their creative projects
+            加入数千名信任 Nano Banana 的专业人士，为您的创意项目提供支持
           </p>
         </div>
 

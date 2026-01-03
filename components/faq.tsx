@@ -2,44 +2,44 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What makes Nano Banana different from other AI image editors?",
+    question: "Nano Banana 与其他 AI 工具有什么不同？",
     answer:
-      "Nano Banana uses advanced AI models that excel at character consistency and scene preservation. Unlike competitors, our technology maintains the identity of subjects across edits while allowing precise control over specific elements. The natural language interface makes complex edits as simple as describing what you want.",
+      "Nano Banana 专注于生成专业的 BANDAI 风格 3D 包装盒设计。我们的 AI 模型经过专门训练，能够自动识别角色特征并创建高质量的包装盒效果图，包含品牌标识和专业的艺术设计。无需输入提示词，一键即可生成。",
   },
   {
-    question: "How does the image upload and editing process work?",
+    question: "如何使用这个工具生成包装盒？",
     answer:
-      "Simply upload your reference image (up to 50MB), describe your desired changes in natural language, and click generate. Our AI processes your request in seconds, maintaining the original quality while applying your edits. You can iterate quickly with multiple variations until you achieve the perfect result.",
+      "非常简单！只需上传一张角色图片（支持 JPG、PNG、WebP 等格式），点击\"生成\"按钮即可。AI 会自动识别角色特征，生成专业的 BANDAI 风格 3D 包装盒设计。整个过程只需几秒钟。",
   },
   {
-    question: "What file formats are supported?",
+    question: "支持哪些图片格式？",
     answer:
-      "Nano Banana supports all common image formats including JPG, PNG, WebP, and HEIC. Output files are provided in high-quality PNG format by default, with options for other formats available in the advanced settings.",
+      "Nano Banana 支持所有常见的图片格式，包括 JPG、PNG、WebP 和 HEIC。生成的包装盒图片以高质量 PNG 格式输出，确保最佳显示效果。",
   },
   {
-    question: "Is there a limit to how many images I can edit?",
+    question: "生成的包装盒包含哪些元素？",
     answer:
-      "Free accounts include 10 edits per month to get started. Pro plans offer unlimited edits with priority processing, batch editing capabilities, and access to advanced features like multi-image consistency and custom model training.",
+      "生成的包装盒包含完整的 BANDAI 风格设计元素：角色高质量艺术图、BANDAI 品牌标识、专业排版、3D 包装盒结构，以及收藏级包装盒的所有视觉元素。",
   },
   {
-    question: "Can I use Nano Banana for commercial projects?",
+    question: "可以用于商业项目吗？",
     answer:
-      "Yes! All Pro plan subscribers have full commercial rights to their generated images. Free tier users can upgrade individual images for commercial use. We provide clear licensing terms and support for enterprise customers with specific requirements.",
+      "可以！所有生成的包装盒设计都可以用于个人和商业项目。我们提供清晰的授权条款，支持企业用户的具体需求。",
   },
   {
-    question: "How fast is the image generation process?",
+    question: "生成速度有多快？",
     answer:
-      "Most edits complete in 5-15 seconds depending on complexity. Our optimized pipeline and distributed infrastructure ensure fast processing even during peak times. Pro users get priority queue access for even faster results.",
+      "大多数情况下，包装盒生成在 5-15 秒内完成。我们优化的生成流程和分布式基础设施确保即使在高峰时段也能快速处理。",
   },
   {
-    question: "What kind of edits can I make with text prompts?",
+    question: "需要输入提示词吗？",
     answer:
-      "You can change backgrounds, modify lighting and colors, add or remove objects, apply artistic styles, enhance details, change clothing or accessories, adjust poses, and much more. The AI understands context and can handle complex multi-step edits from a single prompt.",
+      "不需要！Nano Banana 采用智能自动生成模式。您只需上传角色图片，AI 会自动理解角色特征并生成专业的包装盒设计。系统内置了优化的提示词，确保每次都能生成高质量的 BANDAI 风格包装盒。",
   },
   {
-    question: "Is my data secure and private?",
+    question: "我的数据安全吗？",
     answer:
-      "Absolutely. All uploads are encrypted in transit and at rest. We never use your images for model training without explicit permission. Images are automatically deleted from our servers after 30 days, and you can request immediate deletion at any time from your account settings.",
+      "绝对安全。所有上传的图片在传输和存储时都经过加密处理。我们不会在未经您明确许可的情况下使用您的图片进行模型训练。图片会在 30 天后自动从服务器删除，您也可以随时从账户设置中请求立即删除。",
   },
 ]
 
@@ -48,9 +48,9 @@ export function FAQ() {
     <section id="faq" className="py-20 bg-muted/30">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">Frequently Asked Questions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">常见问题</h2>
           <p className="text-muted-foreground text-lg text-balance leading-relaxed">
-            Everything you need to know about Nano Banana
+            关于 Nano Banana 的一切，您想知道的都在这里
           </p>
         </div>
 
