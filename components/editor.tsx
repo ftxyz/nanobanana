@@ -5,12 +5,13 @@ import type React from "react"
 import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Upload, Sparkles, Loader2 } from "lucide-react"
 
+// 硬编码的提示词 - 只生成BANDAI风格的包装盒
+const DEFAULT_PROMPT = "Create a BANDAI-style toy packaging box with the character from the image printed on it. The box should be a 3D product packaging box, featuring high-quality artwork of the character on the front. Include BANDAI logo and branding elements. The box should look professional and realistic, like an actual collectible figure packaging box."
+
 export function Editor() {
-  const [prompt, setPrompt] = useState("")
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [generatedImages, setGeneratedImages] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
@@ -29,8 +30,8 @@ export function Editor() {
   }
 
   const handleGenerate = async () => {
-    if (!selectedImage || !prompt.trim()) {
-      setError("请上传图片并输入提示词")
+    if (!selectedImage) {
+      setError("请先上传图片")
       return
     }
 
@@ -44,7 +45,7 @@ export function Editor() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          prompt: prompt.trim(),
+          prompt: DEFAULT_PROMPT,
           imageData: selectedImage
         }),
       })
@@ -103,7 +104,7 @@ export function Editor() {
               <Sparkles className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">AI Image Generator</h3>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">使用AI根据你的图片和提示词生成新图像</p>
+            <p className="text-sm text-muted-foreground mb-6">使用AI根据你的图片生成BANDAI风格包装盒</p>
 
             <div className="space-y-6">
               <div>
@@ -136,22 +137,9 @@ export function Editor() {
                 </div>
               </div>
 
-              <div>
-                <Label htmlFor="prompt" className="text-sm font-medium mb-2 block">
-                  Generation Prompt
-                </Label>
-                <Textarea
-                  id="prompt"
-                  placeholder="请描述你希望AI如何生成新图像，例如：'创建一个1/7比例的手办，放在电脑桌上，电脑屏幕显示ZBrush建模过程，旁边放一个BANDAI风格的包装盒'..."
-                  value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
-                  className="min-h-32 resize-none"
-                />
-              </div>
-
               <Button 
                 onClick={handleGenerate}
-                disabled={isLoading || !selectedImage || !prompt.trim()}
+                disabled={isLoading || !selectedImage}
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90" 
                 size="lg"
               >
@@ -230,7 +218,7 @@ export function Editor() {
                       <Upload className="h-8 w-8 text-muted-foreground" />
                     </div>
                     <p className="text-sm font-medium mb-1">Ready for Image Generation</p>
-                    <p className="text-xs text-muted-foreground">Upload an image and enter your prompt to generate new images</p>
+                    <p className="text-xs text-muted-foreground">Upload an image to generate a BANDAI-style packaging box</p>
                   </div>
                 </div>
               )}
