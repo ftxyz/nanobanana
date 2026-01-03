@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFileSync } from 'fs'
-import { join } from 'path'
 import { OpenRouter } from '@/lib/openrouter'
 
 export async function POST(request: NextRequest) {
@@ -19,28 +17,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 如果 process.env 中没有，尝试从文件读取（处理 UTF-16 编码问题）
-    let apiKey = process.env.OPENROUTER_API_KEY
-    if (!apiKey) {
-      try {
-        const envPath = join(process.cwd(), '.env.local')
-        const fileContent = readFileSync(envPath, 'utf-8')
-        // 处理 UTF-16 编码（移除 \u0000）
-        const cleanContent = fileContent.replace(/\u0000/g, '')
-        const match = cleanContent.match(/OPENROUTER_API_KEY=(.+?)(?:\r?\n|$)/)
-        if (match && match[1]) {
-          apiKey = match[1].trim()
-          console.log('从文件读取到 API key，长度:', apiKey.length)
-        }
-      } catch (error: any) {
-        console.error('读取 .env.local 文件失败:', error.message)
-      }
-    }
+    // 在 Vercel 环境中，只能从环境变量读取
+    const apiKey = process.env.OPENROUTER_API_KEY
 
     if (!apiKey) {
       console.error('API key 未配置')
       return NextResponse.json(
-        { error: 'API key 未配置，请检查 .env.local 文件并重启服务器' },
+        { error: 'API key 未配置，请在 Vercel 项目设置中添加 OPENROUTER_API_KEY 环境变量' },
         { status: 500 }
       )
     }
