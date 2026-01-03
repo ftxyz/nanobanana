@@ -12,7 +12,7 @@ import { Upload, Sparkles, Loader2 } from "lucide-react"
 export function Editor() {
   const [prompt, setPrompt] = useState("")
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [generatedImages, setGeneratedImages] = useState<Array<{image: string, analysis: string}>>([])
+  const [generatedImages, setGeneratedImages] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -64,9 +64,17 @@ export function Editor() {
       if (data.images && Array.isArray(data.images) && data.images.length > 0) {
         console.log('✅ 收到生成的图像:', data.images.length, '张')
         console.log('第一张图像URL:', data.images[0])
-        setGeneratedImages(data.images)
+        // 确保设置的是字符串数组
+        const imageUrls = data.images.filter((url: any) => typeof url === 'string' && url.length > 0)
+        if (imageUrls.length > 0) {
+          setGeneratedImages(imageUrls)
+        } else {
+          console.log('❌ 图像URL格式无效')
+          setError('生成的图像URL格式无效')
+        }
       } else {
         console.log('❌ 未收到有效的图像生成结果')
+        console.log('API返回的数据:', data)
         setError('未能生成图像，请重试')
       }
       

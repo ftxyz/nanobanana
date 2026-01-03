@@ -1,60 +1,93 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { readFileSync } from 'fs'
+import { join } from 'path'
+import { OpenRouter } from '@/lib/openrouter'
 
 export async function POST(request: NextRequest) {
   try {
     const { prompt, imageData } = await request.json()
-
-    if (!prompt || !imageData) {
-      return NextResponse.json(
-        { error: 'Prompt and image are required' },
-        { status: 400 }
-      )
-    }
 
     console.log('=== API调试信息 ===')
     console.log('接收到的prompt:', prompt)
     console.log('接收到的imageData长度:', imageData?.length)
     console.log('imageData前100字符:', imageData?.substring(0, 100))
 
-    console.log('发送给AI的提示词:', prompt)
-
-    // 使用原生fetch调用OpenRouter API
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://nanobanana.vercel.app',
-        'X-Title': 'Nano Banana AI Editor',
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash-image-preview",
-        messages: [
-          {
-            "role": "user",
-            "content": [
-              {
-                "type": "text",
-                "text": prompt
-              },
-              {
-                "type": "image_url",
-                "image_url": {
-                  "url": imageData
-                }
-              }
-            ]
-          }
-        ],
-        modalities: ["image", "text"]
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(`API请求失败: ${response.status}`)
+    if (!prompt || !imageData) {
+      return NextResponse.json(
+        { error: '图片和提示词都是必需的' },
+        { status: 400 }
+      )
     }
 
-    const completion = await response.json()
+    // 如果 process.env 中没有，尝试从文件读取（处理 UTF-16 编码问题）
+    let apiKey = process.env.OPENROUTER_API_KEY
+    if (!apiKey) {
+      try {
+        const envPath = join(process.cwd(), '.env.local')
+        const fileContent = readFileSync(envPath, 'utf-8')
+        // 处理 UTF-16 编码（移除 \u0000）
+        const cleanContent = fileContent.replace(/\u0000/g, '')
+        const match = cleanContent.match(/OPENROUTER_API_KEY=(.+?)(?:\r?\n|$)/)
+        if (match && match[1]) {
+          apiKey = match[1].trim()
+          console.log('从文件读取到 API key，长度:', apiKey.length)
+        }
+      } catch (error: any) {
+        console.error('读取 .env.local 文件失败:', error.message)
+      }
+    }
+
+    if (!apiKey) {
+      console.error('API key 未配置')
+      return NextResponse.json(
+        { error: 'API key 未配置，请检查 .env.local 文件并重启服务器' },
+        { status: 500 }
+      )
+    }
+
+    // 确保图片 URL 格式正确（base64 数据）
+    let imageUrl = imageData
+    if (!imageData.startsWith("data:") && !imageData.startsWith("http")) {
+      // 如果不是完整的 data URL，尝试添加前缀
+      if (imageData.startsWith("/9j/") || imageData.startsWith("iVBORw0KGgo")) {
+        // 可能是 base64 但没有前缀
+        imageUrl = `data:image/jpeg;base64,${imageData}`
+      } else {
+        imageUrl = imageData
+      }
+    }
+
+    console.log('调用 Gemini API...')
+
+    // 使用 OpenRouter SDK（与 banana-website-clone 项目一致）
+    const openrouter = new OpenRouter({
+      apiKey: apiKey,
+    })
+
+    // 发送请求（非流式，因为我们不需要流式响应）
+    const chat = await openrouter.chat()
+    const completion = await chat.send({
+      model: "google/gemini-2.5-flash-image-preview",
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: prompt,
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: imageUrl,
+              },
+            },
+          ],
+        },
+      ],
+      stream: false, // 非流式响应
+      modalities: ["image", "text"],
+    })
 
     console.log('=== API响应信息 ===')
     console.log('完整的API响应:', JSON.stringify(completion, null, 2))
@@ -68,6 +101,11 @@ export async function POST(request: NextRequest) {
 
     if (!images || images.length === 0) {
       console.log('❌ 没有收到生成的图像')
+      // 如果没有图像，返回文本内容
+      const textContent = message?.content
+      if (textContent) {
+        return NextResponse.json({ result: textContent })
+      }
       return NextResponse.json(
         { error: 'No images generated' },
         { status: 500 }
@@ -80,10 +118,10 @@ export async function POST(request: NextRequest) {
     // 返回生成的图像URL数组
     const imageUrls = images.map((img: any) => img.image_url?.url).filter(Boolean)
     return NextResponse.json({ images: imageUrls })
-  } catch (error) {
-    console.error('Error generating image:', error)
+  } catch (error: any) {
+    console.error('Error generating:', error)
     return NextResponse.json(
-      { error: 'Failed to generate image' },
+      { error: error.message || '处理请求时出错' },
       { status: 500 }
     )
   }
